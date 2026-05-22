@@ -327,10 +327,12 @@
       if (grid[idx].revealed) {
         // 快速翻开：如果已翻开且旗帜数===数字，翻开周围
         chordReveal(idx);
+        renderBoard();
         return;
       }
 
       reveal(idx);
+      renderBoard();
       checkEnd();
     }
 
@@ -341,7 +343,7 @@
       grid[idx].flagged = !grid[idx].flagged;
       flagCount += grid[idx].flagged ? 1 : -1;
       updateMineDisplay();
-      renderCell(idx);
+      renderBoard();
     }
 
     function reveal(idx) {
